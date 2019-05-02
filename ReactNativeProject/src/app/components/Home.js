@@ -5,7 +5,7 @@ export default class Home extends React.Component {
 	render() {
 		return (
 			<View>
-				<Text> Home Page</Text>
+				<Text> Home mue Page</Text>
 			</View>
 		)
 	}
