@@ -9,6 +9,10 @@ const RootStack = createStackNavigator(
 	{
 		Home: {
 			screen: Home,
+			navigationOptions: {
+				header: null,
+				gesturesEnabled: false,
+			}
 		},
 		Login: {
 			screen: Login,

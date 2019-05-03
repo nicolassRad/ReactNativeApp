@@ -14,7 +14,7 @@ class FeedList extends React.Component {
 					data={this.props.data}
 					renderItem={({ item }) => (
 						<TouchableOpacity
-							onPress={() => { console.log('click'); this.props.navigation.navigate('ItemView', { item }) }}
+							onPress={() => this.props.navigation.navigate('ItemView', { item })}
 						>
 							<View style={styles.cardContainer}>
 								<View style={item.status ? styles.available : styles.disabled} />

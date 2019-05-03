@@ -1,12 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import FeedList from './FeedList';
+import UserProfile from './UserProfile';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
-export default class Home extends React.Component {
-	static navigationOptions = {
-		header: null,
-		gesturesEnabled: false,
-	}
+class Home extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -53,3 +51,9 @@ export default class Home extends React.Component {
 	}
 }
 
+const TabNavigator = createBottomTabNavigator({
+	Home,
+	UserProfile,
+});
+
+export default createAppContainer(TabNavigator);

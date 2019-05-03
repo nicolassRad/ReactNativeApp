@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class ItemView extends React.Component {
 	render() {
-		console.log(this.props.navigation.state.params.item)
 		const itemData = this.props.navigation.state.params.item
 		return (
 			<View>
