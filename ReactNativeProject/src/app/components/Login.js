@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 
 export default class Login extends React.Component {
+	static navigationOptions = {
+		header: null
+	}
 	render() {
 		return (
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -27,7 +30,7 @@ export default class Login extends React.Component {
 						style={styles.formInput}
 						autoCorrect={false}
 					/>
-					<TouchableOpacity style={styles.buttonContainer}>
+					<TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Home')}>
 						<Text style={styles.buttonText}>Login</Text>
 					</TouchableOpacity>
 				</View>
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20
 	},
 	buttonContainer: {
-		marginBottom: 40,
+		marginBottom: 80,
 		height: 50,
 		padding: 15,
 		backgroundColor: '#5874a0'
