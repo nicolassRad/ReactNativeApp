@@ -1,6 +1,8 @@
 import React from 'react';
 import Login from './components/Login';
 import Home from './components/Home';
+import ItemView from './components/ItemView';
+
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 const RootStack = createStackNavigator(
@@ -11,6 +13,7 @@ const RootStack = createStackNavigator(
 		Login: {
 			screen: Login,
 		},
+		ItemView
 	},
 	{
 		initialRouteName: 'Login',

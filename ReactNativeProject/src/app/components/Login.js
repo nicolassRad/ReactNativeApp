@@ -11,7 +11,7 @@ export default class Login extends React.Component {
 				<View style={styles.logoContainer}>
 					<Image
 						style={styles.logo}
-						source={require('../../images/user-logo.png')}
+						source={require('../../images/mafia.png')}
 					/>
 					<Text style={styles.titleText}>Practice, focus and move to React Native </Text>
 				</View>
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	logo: {
-		width: 100,
-		height: 100
+		width: 150,
+		height: 150
 	},
 	titleText: {
 		textAlign: 'center'

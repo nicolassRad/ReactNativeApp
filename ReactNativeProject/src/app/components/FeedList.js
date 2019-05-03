@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-export default class FeedList extends React.Component {
+class FeedList extends React.Component {
 	static navigationOptions = {
 		header: null
 	}
@@ -12,10 +13,11 @@ export default class FeedList extends React.Component {
 				<FlatList
 					data={this.props.data}
 					renderItem={({ item }) => (
-						<TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => { console.log('click'); this.props.navigation.navigate('ItemView', { item }) }}
+						>
 							<View style={styles.cardContainer}>
 								<View style={item.status ? styles.available : styles.disabled} />
-								<Text style={styles.cardTitle}>{item.title}</Text>
 								<Image
 									style={styles.cardImage}
 									source={{ uri: item.imageUrl }} />
@@ -32,8 +34,8 @@ export default class FeedList extends React.Component {
 const styles = StyleSheet.create({
 	cardContainer: {
 		marginBottom: 10,
-		backgroundColor: '#f9f9f9',
-		height: 200,
+		backgroundColor: '#f2f4f7',
+		height: 160,
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
@@ -41,12 +43,14 @@ const styles = StyleSheet.create({
 		borderRadius: 50,
 		width: 100,
 		height: 100,
+		marginLeft: 10
 	},
 	cardTitle: {
-
+		alignSelf: 'stretch',
 	},
 	cardDescription: {
-
+		alignSelf: 'center',
+		marginLeft: 10
 	},
 
 	available: {
@@ -63,5 +67,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		width: 15
 	}
-
 })
+
+export default withNavigation(FeedList);

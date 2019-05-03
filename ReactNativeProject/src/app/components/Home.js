@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import FeedList from './FeedList';
+
 export default class Home extends React.Component {
 	static navigationOptions = {
-		header: null
+		header: null,
+		gesturesEnabled: false,
 	}
 	constructor(props) {
 		super(props);
@@ -33,12 +35,18 @@ export default class Home extends React.Component {
 					description: 'Description 4',
 					imageUrl: 'https://i.kinja-img.com/gawker-media/image/upload/s--C00bVsGR--/c_scale,f_auto,fl_progressive,q_80,w_800/a8sv2drcithudsjmy7wz.jpg'
 				},
+				{
+					title: "Titlu 5",
+					status: false,
+					description: 'Description 5',
+					imageUrl: 'https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/avatar-2-cumplira-con-su-fecha-de-estreno-segun-james-cameron/90508637-1-esl-ES/Avatar-2-cumplira-con-su-fecha-de-estreno-segun-James-Cameron.jpg'
+				},
 			]
 		}
 	}
 	render() {
 		return (
-			<View>
+			<View style={{ backgroundColor: '#ffffff' }}>
 				<FeedList data={this.state.data} />
 			</View>
 		)
