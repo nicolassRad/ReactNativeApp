@@ -1,10 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, AsyncStorage } from 'react-native';
+import { USER } from './../utils/constants';
 export default class Login extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			username: '',
+			password: ''
+		}
+	}
 	static navigationOptions = {
 		header: null
 	}
+
+	componentDidMount() {
+		this._checkUserIfUserIsLogged()
+	}
+
+	_checkUserIfUserIsLogged = async () => {
+		let userIsLogged = await AsyncStorage.getItem('testUser');
+		if (userIsLogged == 'true') {
+			this.props.navigation.navigate('Home');
+		}
+	}
+
+	_loginUser = () => {
+		const { password, username } = this.state;
+		if (password == USER.PASSWORD && username == USER.USERNAME) {
+			AsyncStorage.setItem('testUser', 'true');
+			this.props.navigation.navigate('Home');
+		}
+		else {
+			alert('Username or password incorect')
+		}
+	}
+
 	render() {
 		return (
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -22,6 +52,7 @@ export default class Login extends React.Component {
 						style={styles.formInput}
 						autoCapitalize="none"
 						autoCorrect={false}
+						onChangeText={(username) => this.setState({ username })}
 					/>
 					<TextInput
 						placeholderTextColor="#b6bdc6"
@@ -29,8 +60,9 @@ export default class Login extends React.Component {
 						secureTextEntry
 						style={styles.formInput}
 						autoCorrect={false}
+						onChangeText={(password) => this.setState({ password })}
 					/>
-					<TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Home')}>
+					<TouchableOpacity style={styles.buttonContainer} onPress={this._loginUser}>
 						<Text style={styles.buttonText}>Login</Text>
 					</TouchableOpacity>
 				</View>
