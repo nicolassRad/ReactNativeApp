@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, AsyncStorage } from 'react-native';
-import { USER } from './../utils/constants';
+import { USER_CREDITENTIAL, LOGIN_PLACEHOLDER } from '../utils/constants';
 export default class Login extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,17 +18,27 @@ export default class Login extends React.Component {
 	}
 
 	_checkUserIfUserIsLogged = async () => {
-		let userIsLogged = await AsyncStorage.getItem('testUser');
-		if (userIsLogged == 'true') {
-			this.props.navigation.navigate('Home');
+		try {
+			let userIsLogged = await AsyncStorage.getItem('testUser');
+			if (userIsLogged == 'true') {
+				this.props.navigation.navigate('Home');
+			}
+		}
+		catch (error) {
+			alert('Error while checking User', error);
 		}
 	}
 
 	_loginUser = () => {
 		const { password, username } = this.state;
-		if (password == USER.PASSWORD && username == USER.USERNAME) {
-			AsyncStorage.setItem('testUser', 'true');
-			this.props.navigation.navigate('Home');
+		if (password == USER_CREDITENTIAL.PASSWORD && username == USER_CREDITENTIAL.USERNAME) {
+			try {
+				AsyncStorage.setItem('testUser', 'true');
+				this.props.navigation.navigate('Home');
+			}
+			catch (error) {
+				alert('Error while logging', error);
+			}
 		}
 		else {
 			alert('Username or password incorect')
@@ -47,7 +57,7 @@ export default class Login extends React.Component {
 				</View>
 				<View style={styles.formContainer}>
 					<TextInput
-						placeholder="Username or email"
+						placeholder={LOGIN_PLACEHOLDER.USERNAME}
 						placeholderTextColor='#b6bdc6'
 						style={styles.formInput}
 						autoCapitalize="none"
@@ -56,7 +66,7 @@ export default class Login extends React.Component {
 					/>
 					<TextInput
 						placeholderTextColor="#b6bdc6"
-						placeholder="Password"
+						placeholder={LOGIN_PLACEHOLDER.PASSWORD}
 						secureTextEntry
 						style={styles.formInput}
 						autoCorrect={false}

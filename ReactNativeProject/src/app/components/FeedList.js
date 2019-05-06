@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		marginLeft: 10
 	},
-
 	available: {
 		backgroundColor: '#6ad16e',
 		alignSelf: 'stretch',

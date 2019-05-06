@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView } from 'react-native';
 
 export default class About extends React.Component {
 	render() {
 		return (
-			<View>
+			<SafeAreaView>
 				<Text>About</Text>
-			</View>
+			</SafeAreaView>
 		)
 	}
 }
