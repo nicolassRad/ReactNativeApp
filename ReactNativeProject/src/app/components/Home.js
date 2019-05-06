@@ -4,6 +4,7 @@ import FeedList from './FeedList';
 import UserProfile from './UserProfile';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { DATA_TO_BE_CONSUMED } from '../utils/constants';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -15,13 +16,15 @@ class Home extends React.Component {
 	render() {
 		return (
 			<SafeAreaView style={{ backgroundColor: '#ffffff' }}>
-				<View style={styles.imageBannerContainer}>
-					<Image
-						style={styles.imageBanner}
-						source={require('../../images/3pillarglobal-logo.png')}
-					/>
-				</View>
-				<FeedList data={this.state.data} />
+				<ScrollView>
+					<View style={styles.imageBannerContainer}>
+						<Image
+							style={styles.imageBanner}
+							source={require('../../images/3pillarglobal-logo.png')}
+						/>
+					</View>
+					<FeedList data={this.state.data} />
+				</ScrollView>
 			</SafeAreaView>
 		)
 	}
