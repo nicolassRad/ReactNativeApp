@@ -1,1 +1,1 @@
-# ReactNativeApp
+# In order to see the project, open up ReactNativeProject
